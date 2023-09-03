@@ -1,0 +1,170 @@
+{% extends 'base/client/panel.html' %} {% load static %}
+{% block title %} New Order {% endblock %}
+ {% block content %}
+
+<div
+  class="min-w-screen min-h-screen flex items-center justify-center px-5 py-5 m-2 bg-dash-back border border-border-color"
+>
+  <div class="bg-dash-back text-white shadow-xl w-full overflow-hidden">
+    <div class="md:flex w-full">
+      <div class="w-full md:w-1/2 py-10 px-5 md:px-10 border border-white">
+        <div class="text-center mb-10">
+          <h1 class="font-bold text-2xl text-white">New Order</h1>
+          <p>Welcome, esteemed customer, to our Order Page. To ensure a seamless delivery experience, kindly spare a moment to furnish us with your detail</p>
+        </div>
+        <form method="post" action="">
+          {% csrf_token %}
+          <!-- input fields -->
+          <div
+            class="w-full mb-4 md:flex md:justify-between md:items-center md:flex-wrap"
+          >
+            <div class="w-full md:w-1/3 mb-4 md:mb-0">
+              <label for="customer_name" class="text-md mb-6 ml-1">Customer Name</label>
+            </div>
+
+            <div class="w-full md:w-2/3">
+              <input
+                type="text"
+                id="customer_name"
+                name="customer_name"
+                class="w-full py-2 border border-border-color focus:ring-hover-green focus:border-0 bg-dash-back"
+                placeholder="Abdullah"
+              />
+            </div>
+          </div>
+
+          <div
+            class="w-full mb-4 md:flex md:justify-between md:items-center md:flex-wrap"
+          >
+            <div class="w-full md:w-1/3 mb-4 md:mb-0">
+              <label for="item_name" class="text-md mb-6 ml-1">Item Name</label>
+            </div>
+
+            <div class="w-full md:w-2/3">
+              <input
+                type="text"
+                id="item_name"
+                name="item_name"
+                class="w-full py-2 border border-border-color focus:ring-hover-green focus:border-0 bg-dash-back"
+                placeholder="Biryani"
+              />
+            </div>
+          </div>
+          <div
+            class="w-full mb-4 md:flex md:justify-between md:items-center md:flex-wrap"
+          >
+            <div class="w-full md:w-1/3 mb-4 md:mb-0">
+              <label for="phone_number" class="text-md mb-6 ml-1">Phone Number</label>
+            </div>
+
+            <div class="w-full md:w-2/3">
+              <input
+                type="number"
+                id="phone_number"
+                name="phone_number"
+                class="w-full py-2 border border-border-color focus:ring-hover-green focus:border-0 bg-dash-back"
+                placeholder="9634332"
+              />
+            </div>
+          </div>
+          <div
+            class="w-full mb-4 md:flex md:justify-between md:items-center md:flex-wrap"
+          >
+            <div class="w-full md:w-1/3 mb-4 md:mb-0">
+              <label for="order_number" class="text-md mb-6 ml-1">Order No</label>
+            </div>
+
+            <div class="w-full md:w-2/3">
+              <input
+                type="text"
+                id="order_number"
+                name="order_number"
+                class="w-full py-2 border border-border-color focus:ring-hover-green focus:border-0 bg-dash-back"
+                placeholder="43432"
+              />
+            </div>
+          </div>
+          <div
+            class="w-full mb-4 md:flex md:justify-between md:items-center md:flex-wrap"
+          >
+            <div class="w-full md:w-1/3 mb-4 md:mb-0">
+              <label for="amount" class="text-md mb-6 ml-1">Amount</label>
+            </div>
+
+            <div class="w-full md:w-2/3">
+              <input
+                id="amount"
+                name="amount"
+                type="number"
+                class="w-full py-2 border border-border-color focus:ring-hover-green focus:border-0 bg-dash-back"
+                placeholder="5"
+              />
+            </div>
+          </div>
+          <div
+            class="w-full mb-4 md:flex md:justify-between md:items-center md:flex-wrap"
+          >
+            <div class="w-full md:w-1/3 mb-4 md:mb-0">
+              <label for="address" class="text-md mb-6 ml-1">Address</label>
+            </div>
+
+            <div class="w-full md:w-2/3">
+              <textarea
+                id="address"
+                name="address"
+                class="w-full py-2 border border-border-color focus:ring-hover-green focus:border-0 bg-dash-back"
+                placeholder="245 Farwaniya ..."
+              ></textarea>
+            </div>
+          </div>
+
+          <div class="w-full mb-12 md:flex md:justify-between md:items-center md:flex-wrap">
+            <div class="w-full md:w-1/3 mb-4 md:mb-0">
+              <label for="prepaid_postpaid" class="text-md mb-6 ml-1">Payment Type</label>
+            </div>
+          
+            <div class="w-full md:w-2/3 relative">
+              <label for="prepaid_postpaid" class="sr-only">Payment Type</label>
+              <select
+                id="prepaid_postpaid"
+                class="w-full py-2 pl-3 pr-8 border border-border-color focus:ring-hover-green focus:border-0 bg-dash-back appearance-none"
+                name="prepaid_postpaid"
+              >
+                <option value="Cash">Cash</option>
+                <option value="Paid">Paid</option>
+              </select>
+              <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
+                <i class="mdi mdi-chevron-down text-gray-400"></i>
+              </div>
+            </div>
+          </div>
+          
+
+          <!-- bottom of input fields  -->
+
+          <div class="flex -mx-3">
+            <div class="w-full px-3 mb-5">
+              <button
+                class="block w-full max-w-full mx-auto bg-light-green hover:bg-hover-green focus:bg-hover-green text-white rounded-sm px-3 py-3 font-semibold"
+              >
+                ORDER NOW
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <!-- image side  -->
+
+      <div class="hidden md:block w-1/2 bg-dash-back pl-5">
+        <img
+          src="{% static 'base/images/orderpage.jpg' %}"
+          class="h-auto w-full rounded-br-md rounded-tr-md"
+          alt=""
+        />
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,179 @@
+{% extends 'base/admindashboard/panel.html' %} {% load static }
+ {% block title %} {{ customer }} {% endblock %} {% block content %}
+<main
+  class="p-6 sm:p-10 space-y-6 bg-dash-back text-white m-2 border border-border-color"
+>
+  <div class="flex flex-col space-y-6 md:space-y-0 md:flex-row justify-between">
+    <div class="mr-6">
+      <h1 class="text-2xl font-semibold mb-2">Order summary</h1>
+    </div>
+  </div>
+  <section class="grid md:grid-cols-2 xl:grid-cols-4 gap-6 bg-dash-back">
+    <div
+      class="flex items-center p-8 bg-dash-back border-border-color border shadow rounded-lg justify-between"
+    >
+      <div>
+        <span class="block text-md font-bold">PENDING ORDERS</span>
+        <span class="block text-md font-bold">{{pending}}</span>
+        <span class="block text-white"
+          >There are {{pending}} orders yet to be delivered.</span
+        >
+      </div>
+      <div
+        class="inline-flex flex-shrink-0 items-center justify-center h-16 w-16 text-white bg-secondry-light rounded-full mr-6 border-border-color border"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+          class="w-6 h-6"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"
+          />
+        </svg>
+      </div>
+    </div>
+    <div
+      class="flex items-center p-8 bg-dash-back border-border-color border shadow rounded-lg justify-between"
+    >
+      <div>
+        <span class="block text-md font-bold">OUT FOR DELIVERY</span>
+        <span class="block text-md font-bold">{{outfor}}</span>
+        <span class="block text-white"
+          >A total of {{outfor}} is on its way for delivery.</span
+        >
+      </div>
+      <div
+        class="inline-flex flex-shrink-0 items-center justify-center h-16 w-16 text-white bg-secondry-light rounded-full mr-6 border-border-color border"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+          class="w-6 h-6"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M8.25 18.75a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 01-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h1.125c.621 0 1.129-.504 1.09-1.124a17.902 17.902 0 00-3.213-9.193 2.056 2.056 0 00-1.58-.86H14.25M16.5 18.75h-2.25m0-11.177v-.958c0-.568-.422-1.048-.987-1.106a48.554 48.554 0 00-10.026 0 1.106 1.106 0 00-.987 1.106v7.635m12-6.677v6.677m0 4.5v-4.5m0 0h-12"
+          />
+        </svg>
+      </div>
+    </div>
+    <div
+      class="flex items-center p-8 bg-dash-back border-border-color border shadow rounded-lg justify-between"
+    >
+      <div>
+        <span class="block text-md font-bold">DELIVERED ORDERS</span>
+        <span class="block text-md font-bold">{{delivered}}</span>
+        <span class="block text-white"
+          >A total of {{delivered}} orders have been delivered.</span
+        >
+      </div>
+      <div
+        class="inline-flex flex-shrink-0 items-center justify-center h-16 w-16 text-white bg-secondry-light rounded-full mr-6 border-border-color border"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+          class="w-6 h-6"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z"
+          />
+        </svg>
+      </div>
+    </div>
+    <div
+      class="flex items-center p-8 bg-dash-back border-border-color border shadow rounded-lg justify-between"
+    >
+      <div>
+        <span class="block text-md font-bold">TOTAL ORDERS</span>
+        <span class="block text-md font-bold">{{total_orders}}</span>
+        <span class="block text-white"
+          >You have made a total of {{total_orders}} orders so far.</span
+        >
+      </div>
+      <div
+        class="inline-flex flex-shrink-0 items-center justify-center h-16 w-16 text-white bg-secondry-light rounded-full mr-6 border-border-color border"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+          class="w-6 h-6"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+          />
+        </svg>
+      </div>
+    </div>
+  </section>
+</main>
+<div class="p-5 m-2 max-w-fit bg-dash-back border border-border-color">
+  <!-- table wrapper -->
+  <div
+    class="max-h-96 overflow-y-scroll m-5 max-w-xs md:max-w-xl lg:max-w-3xl xl:max-w-screen-xl"
+  >
+    <!-- Table -->
+    <table class="border-collapse border-spacing-0 min-w-[max-content]">
+      <thead>
+        <th class="sticky top-1 bg-secondry-light text-white uppercase py-2">
+          Customer name
+        </th>
+        <th class="sticky top-1 bg-secondry-light text-white uppercase py-2">
+          Item NAME
+        </th>
+        <th class="sticky top-1 bg-secondry-light text-white uppercase py-2">
+          Phone number
+        </th>
+        <th class="sticky top-1 bg-secondry-light text-white uppercase py-2">
+          Order number
+        </th>
+        <th class="sticky top-1 bg-secondry-light text-white uppercase py-2">
+          Price
+        </th>
+        <th class="sticky top-1 bg-secondry-light text-white uppercase py-2">
+          Location
+        </th>
+        <th class="sticky top-1 bg-secondry-light text-white uppercase py-2">
+          Payment type
+        </th>
+        <th class="sticky top-1 bg-secondry-light text-white uppercase py-2">
+          Status
+        </th>
+      </thead>
+
+      {% for order in orders %}
+      <tr class="border-b border-border-color py-8 text-white">
+        <td class="px-2 py-4">{{ order.customer_name }}</td>
+        <td class="px-2 py-4">{{ order.item_name }}</td>
+        <td class="px-2 py-4">{{ order.phone_number }}</td>
+        <td class="px-2 py-4">{{ order.amount }}</td>
+        <td class="px-2 py-4">{{ order.order_number }}</td>
+        <td class="px-2 py-4">{{ order.address }}</td>
+        <td class="px-2 py-4">{{ order.prepaid_postpaid }}</td>
+        <td class="px-2 py-4">{{ order.status }}</td>
+      </tr>
+      {% endfor %}
+    </table>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,103 @@
+<!-- component -->
+{% extends 'base/admindashboard/panel.html' %} {% load static }
+{% block title %} View ALL USERS {% endblock %}
+
+{% block content %}
+<!-- component -->
+<section class="antialiased flex flex-wrap">
+  <div class="bg-dash-back border border-border-color p-4 m-2 w-fit">
+    <table class="text-white font-mono">
+      <thead class="bg-secondry-light p-2 uppercase">
+        <th class="p-2">Id</th>
+        <th class="p-2">Name</th>
+        <th class="p-2">Pending</th>
+        <th class="p-2">Cancelled</th>
+        <th class="p-2">Deliverd</th>
+        <th class="p-2">Total</th>
+      </thead>
+      {% for customer in customer_data %}
+      <tr class="border-b border-border-color">
+          <td>{{ customer.id}}</td>
+          <td>{{ customer.customer}}</td>
+          <td>{{ customer.pending_count}}</td>
+          <td>{{ customer.onway_count}}</td>
+          <td>{{ customer.delivered_count}}</td>
+          <td>{{ customer.cancelled}}</td>
+          <td>{{ customer.order_count}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+  </div>
+  <div class="bg-dash-back border border-border-color p-4 m-2 w-fit">
+    <table class="text-white font-mono border-collapse border-spacing-0">
+      <thead class="bg-secondry-light p-2 uppercase sticky top-1 py-2">
+        <th class="p-2">Name</th>
+        <th class="p-2">Phone</th>
+        <th class="p-2">Email</th>
+        <th class="p-2">Address</th>
+        <th class="p-2">View</th>
+        <th class="p-2">Total</th>
+      </thead>
+      <tbody>
+      {% for customer in customers %}
+      <tr class="border-b border-border-color p-2">
+        <td class="p-2 text-left">{{ customer.name }}</td>
+        <td class="p-2 text-left">{{ customer.email }}</td>
+        <td class="p-2 text-left">{{ customer.phone }}</td>
+        <td class="p-2 text-left">{{ customer.address }}</td>
+        <td class="p-2 text-left">
+        <a href="{% url 'customerDetail' customer.id  %}">   
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="w-6 h-6"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z"
+              />
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+              />
+            </svg> <span class="sr-only">View Customer Details</span></a>
+        </td>
+        <td class="p-2 text-left">
+          <a href="{% url 'customerDetail' customer.id  %}">
+            <span aria-hidden="false">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="w-6 h-6"
+              >
+                 <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0"
+              />
+              </svg>
+            </span>
+            <span class="sr-only">View Customer Details</span>
+          </a>
+        </td>
+        
+      </tr>
+      {% endfor %}
+
+  
+
+       
+      </tbody>
+    </table>
+  </div>
+</section>
+
+{% endblock %}

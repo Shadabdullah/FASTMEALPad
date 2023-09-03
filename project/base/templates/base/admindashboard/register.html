@@ -1,0 +1,113 @@
+{% extends 'base/admindashboard/panel.html' %} {% load static %} 
+{% block title %} Register New User{% endblock %}
+{% block content %}
+
+<div
+  class="min-w-screen min-h-screen flex items-center justify-center px-5 py-5 m-2 bg-dash-back border border-border-color"
+>
+  <div
+    class="bg-dash-back text-white  shadow-xl w-full overflow-hidden"
+  >
+    <div class="md:flex w-full">
+      <div class="hidden md:block w-1/2 bg-dash-back pl-5">
+        <img src="{% static 'base/images/login.jpg' %}" class="h-auto w-full  rounded-bl-md rounded-tl-md"  alt="">
+      </div>
+      <form method="post" action="" class="w-full md:w-1/2 py-10 px-5 md:px-10 border border-white">
+        {% csrf_token %}
+        <div class="text-center mb-10">
+          <h1 class="font-bold text-3xl text-white">REGISTER</h1>
+          <p>Enter your information to register</p>
+        </div>
+        <div>
+            <div class="flex -mx-3">
+                <div class="w-full px-3 mb-3">
+                  <label for="username" class="text-md px-1 mb-6">Username</label>
+                  <div class="flex">
+                    <div
+                      class="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center"
+                    >
+                      <i class="mdi mdi-email-outline text-white text-lg"></i>
+                    </div>
+                    <input
+                      type="text"
+                      name="username"
+                      class="w-full -ml-10 pl-10 pr-3 py-2  border border-border-color  focus:ring-hover-green focus:border-0 bg-dash-back"
+                      placeholder="Enter username"
+                      required
+                    />
+                  </div>
+                </div>
+              </div>
+               <div class="flex -mx-3">
+            <div class="w-full px-3 mb-3">
+              <label for="id_email" class="text-md px-1 mb-6">Email</label>
+              <div class="flex">
+                <div
+                  class="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center"
+                >
+                  <i class="mdi mdi-email-outline text-white text-lg"></i>
+                </div>
+                <input
+                  type="email"
+                  id="id_email"
+                  name="email"
+                  class="w-full -ml-10 pl-10 pr-3 py-2  border border-border-color  focus:ring-hover-green focus:border-0 bg-dash-back"
+                  placeholder="john@gmail.com"
+                  required
+                />
+              </div>
+            </div>
+          </div> <div class="flex -mx-3">
+            <div class="w-full px-3 mb-3">
+              <label for="id_password1" class="text-md px-1 mb-6">Password</label>
+              <div class="flex">
+                <div
+                  class="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center"
+                >
+                  <i class="mdi mdi-email-outline text-white text-lg"></i>
+                </div>
+                <input
+                  type="password"
+                  name="password1"
+                  id="id_password1"
+                  class="w-full -ml-10 pl-10 pr-3 py-2  border border-border-color  focus:ring-hover-green focus:border-0 bg-dash-back"
+                  placeholder="*****"
+                />
+              </div>
+            </div>
+          </div> <div class="flex -mx-3">
+            <div class="w-full px-3 mb-12">
+              <label for="id_password2" class="text-md px-1 mb-6">Confirm Password</label>
+              <div class="flex">
+                <div
+                  class="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center"
+                >
+                  <i class="mdi mdi-email-outline text-white text-lg"></i>
+                </div>
+                <input
+                  type="password"
+                  name="password2"
+                  id="id_password2"
+                  class="w-full -ml-10 pl-10 pr-3 py-2  border border-border-color  focus:ring-hover-green focus:border-0 bg-dash-back"
+                  placeholder="*******"
+                />
+              </div>
+            </div>
+          </div>
+          <div class="flex -mx-3">
+            <div class="w-full px-3 mb-5">
+              <button
+              type="submit"
+                class="block w-full max-w-full mx-auto bg-light-green hover:bg-hover-green focus:bg-hover-green text-white rounded-sm px-3 py-3 font-semibold"
+              >
+                REGISTER NOW
+              </button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
