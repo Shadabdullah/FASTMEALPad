@@ -1,3 +1,4 @@
+node_modules
 # Python/Django
 __pycache__/
 *.py[cod]

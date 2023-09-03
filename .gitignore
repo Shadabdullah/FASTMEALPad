@@ -1,4 +1,5 @@
 # Python/Django
+node_modules
 __pycache__/
 *.py[cod]
 *.sqlite3
