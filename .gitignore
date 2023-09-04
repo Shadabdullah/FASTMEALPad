@@ -20,3 +20,6 @@ local_settings.py
 *.pyc
 *.pyo
 *.pyd
+
+**/settings.py
+
