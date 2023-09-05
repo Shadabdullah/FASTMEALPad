@@ -21,5 +21,5 @@ local_settings.py
 *.pyo
 *.pyd
 
-**/settings.py
+db.sqlite3
 
