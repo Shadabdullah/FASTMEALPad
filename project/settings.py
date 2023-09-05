@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-87nxk-j9gnfl9s221me=8@l11yxtm%l5mgf16aq+l8-4*e)!57
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['getmeal.pythonanywhere.com']
 
 
 # Application definition
@@ -83,10 +83,15 @@ WSGI_APPLICATION = 'project.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME':  'getmeal$fastmeal',
+        'USER': 'getmeal',
+        'PASSWORD': 'MY123$%aS',
+        'HOST': 'getmeal.mysql.pythonanywhere-services.com',  # Change if your MySQL server is on a different host
+        'PORT': '3306',       # Default MySQL port
     }
 }
+
 
 
 # Password validation
