@@ -64,4 +64,7 @@ module.exports = {
         require('@tailwindcss/line-clamp'),
         require('@tailwindcss/aspect-ratio'),
     ],
+     safelist: [{
+            pattern: /primary-dark|secondry-light|light-green|dash-back|hover-green|background-color|border-color|/
+        }]
 }

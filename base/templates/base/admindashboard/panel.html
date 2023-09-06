@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     {% tailwind_css %}
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.0/jspdf.umd.min.js"></script>
+
   </head>
   <body class="flex bg-background-color min-h-screen font-mono">
     <aside class="hidden sm:flex sm:flex-col">
@@ -29,7 +29,7 @@
         <nav class="flex flex-col mx-4 my-6 space-y-4">
           <a
             href="{% url 'admin-dashboard' %}"
-            class="inline-flex items-center justify-center py-3  hover:text-gray-400 hover:bg-gray-700 focus:text-gray-400 focus:bg-gray-700 rounded-sm"
+            class= "inline-flex items-center justify-center py-3  hover:text-red-200 hover:bg-gray-700 focus:text-gray-400 focus:bg-gray-700 rounded-sm"
           >
             <span class="sr-only">Dashboard</span>
             <svg
@@ -109,8 +109,9 @@
         class="flex items-center h-20 px-6 sm:px-10 bg-dash-back m-2 border border-border-color"
       >
         <button
-          class="block sm:hidden relative flex-shrink-0 p-2 mr-2 text-white hover:bg-gray-100 hover:text-gray-800 focus:bg-gray-100 focus:text-gray-800 rounded-full"
+          class= "block sm:hidden relative flex-shrink-0 p-2 mr-2 text-white hover:bg-gray-100 hover:text-gray-800 focus:bg-gray-100 focus:text-gray-800 rounded-full"
         >
+
           <span class="sr-only">Menu</span>
           <svg
             aria-hidden="true"
@@ -142,7 +143,7 @@
           </button>
           <div class="border-l pl-3 ml-3 space-x-1">
             <button
-              class="relative p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-600 focus:bg-gray-100 focus:text-gray-600 rounded-full"
+              class="relative p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-600 focus:bg-dash-back focus:text-gray-600 rounded-full"
             >
               <span class="sr-only">Notifications</span>
               <span
@@ -168,7 +169,17 @@
             </button>
           </div>
         </div>
-      </header>
+     <!-- working on mobile view  -->
+
+
+      </header>     
+      <div class="block sm:hidden bg-dash-back text-white text-sm absolute left-0   p-20 m-2"><ul>
+      <li>Dashboad</li>
+      <li>Register</li>
+      <li>View User</li>
+      <li>Logout</li>
+      
+    </ul></div>
 
       {% block content %} {% endblock %}
     </div>
