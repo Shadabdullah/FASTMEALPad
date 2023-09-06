@@ -114,7 +114,7 @@
               
 
                     <a
-                      href="#"
+                      href="{% url 'user-logout' %}"
                       class="block px-4 py-2 text-sm text-gray-700"
                       role="menuitem"
                       tabindex="-1"
@@ -138,7 +138,7 @@
 
                 <a
                   class="inline-block rounded border border-white px-8 py-3 text-sm font-medium text-white transition hover:shadow-xl ml-2"
-                  href="#"
+                  href="#partnerSection"
                 >
                   Partner
                 </a>
@@ -245,17 +245,17 @@
                 >Dashboard</a
               >
               <a
-                href="#"
+                href="{% url 'user-logout' %}"
                 class="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white"
                 >Sign out</a
               >
             </div>
             {% else %}
             <div class="my-2 p-4 flex flex-wrap gap-3">
-              <a class="text-white ring-1 p-2 mx-2 ring-white" href="#"
+              <a class="text-white ring-1 p-2 mx-2 ring-white" href="{% url 'login' %}"
                 >Login</a
               >
-              <a class="text-white ring-1 p-2 mx-2 ring-white" href="#"
+              <a class="text-white ring-1 p-2 mx-2 ring-white" href="#partnerSection"
                 >Partner with us</a
               >
             </div>
