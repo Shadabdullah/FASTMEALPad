@@ -46,9 +46,9 @@ module.exports = {
             colors: {
                "primary-dark": '#141D24',
                "secondry-light": '#152A2D',
-               "but-light" : '#4CAF50' ,
+               "lightH" : '#000CAF59' ,
                "dash-back" :'#181F27',
-               "but-dark":'#17d81e',
+               "hover-green":'#17d81e',
                "background-color":"#0E1118",
                "border-color":"#3f4d5b"},
         },
@@ -64,5 +64,16 @@ module.exports = {
         require('@tailwindcss/line-clamp'),
         require('@tailwindcss/aspect-ratio'),
     ],
-     
+     safelist: [{
+        pattern: /(mt|mb|mr|ml|my|mx|px|py|pt|pb|pl|pr)-[0-9]+/
+      },
+      {
+        pattern: /flex-.*/
+      },
+      {
+        pattern: /(bottom|right|top|left)-[0-9]+/
+      },
+      {
+        pattern: /(w|h)-[0-9]+/
+      }]
 }
