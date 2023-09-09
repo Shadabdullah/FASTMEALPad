@@ -14,6 +14,7 @@ urlpatterns = [
     path('rest-view',viewRestaurant, name='rest-view'),
     path('delete_order/<str:pk>/',deleteOrder,name='delete-order'),
     path('dashboard/' ,redirectDash ,name='dashRedirec'),
-    path('unauthor/',unauthor, name='unauthor')
+    path('unauthor/',unauthor, name='unauthor'),
+    path('update/<str:pk>/',update, name='update-status'),
     
 ]

@@ -1,20 +1,17 @@
-{% load static tailwind_tags %}
+
 
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Dashboard</title>
+   {% load static tailwind_tags %} 
     {% tailwind_css %}
-
+ <title>Dashboard</title>
   </head>
   <body class="flex bg-background-color min-h-screen font-mono">
     <aside class="hidden sm:flex sm:flex-col">
-      <a href="#"
-        alt="wait"
-        class="items-center justify-center h-20 w-20 bg-dash-back hidden"
-      >
+      <a href="#" alt="wait" class="items-center justify-center h-20 w-20 bg-dash-back hidden">
         <svg fill="none" viewBox="0 0 64 64" class="h-12 w-12">
           <title>Company logo</title>
           <path
@@ -22,6 +19,7 @@
             fill="#fff"
           />
         </svg>
+        <span class="sr-only">company</span>
       </a>
       <div
         class="flex-grow flex flex-col justify-between text-white bg-dash-back"
@@ -81,7 +79,7 @@
         <div
           class="inline-flex items-center justify-center h-20 w-20 border-t border-gray-700"
         >
-         <a class="p-3 hover:text-gray-400 hover:bg-gray-700 focus:text-gray-400 focus:bg-gray-700 rounded-sm" href="{% url 'user-logout' %}">
+         <button id="headerLogout" type="button" class="p-3 hover:text-gray-400 hover:bg-gray-700 focus:text-gray-400 focus:bg-gray-700 rounded-sm" >
             <span class="sr-only">Log Out</span>
            
             <svg
@@ -99,7 +97,7 @@
               />
             </svg>
              <span class="sr-only">View Customer Details</span>
-          </a>
+          </button>
           </button>
         </div>
       </div>
@@ -215,7 +213,7 @@
           </div>
           <div class="border-t border-gray-700 pb-3 pt-4">
               
-        <a class=" p-3 text-white hover:text-gray-400 hover:bg-gray-700 focus:text-gray-400 focus:bg-gray-700 rounded-sm" href="{% url 'user-logout' %}">
+        <a class=" cursor-pointer p-3 text-white hover:text-gray-400 hover:bg-gray-700 focus:text-gray-400 focus:bg-gray-700 rounded-sm" id="logoutButtonFooter">
             <span class="sr-only">Log Out</span>
            
             <svg
@@ -239,12 +237,13 @@
            
   
           </div>
-        </div>    
-
+        </div>   
 
       {% block content %} {% endblock %}
     </div>
     <script src="{% static 'base/js/sharewp.js' %}"></script>
-     <script src="{% static 'base/js/panelHamburger.js' %}"></script>
+     <script src="{% static 'base/js/panelHamburger.js' %}"></script>\
+     <script src="{% static 'base/js/update.js' %}"></script>
+     <script src="{% static 'base/js/logout.js' %}"></script>
   </body>
 </html>

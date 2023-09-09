@@ -37,10 +37,12 @@ def  registration(request):
             restaurant.name = username
             restaurant.email = email
             restaurant.save()
-            print(user)
-            return redirect('/')
+            messages.success(request,"Registered Succefully") 
+            return redirect('admin-dashboard')
         else:
-            print('Not correct')
+            error_msg= form.errors
+            messages.error(request, error_msg)
+            
 
     context = {'form': form}
     return render(request, 'base/admindashboard/register.html', context)
@@ -71,6 +73,8 @@ def userLogout(request):
 @login_required(login_url='login/')
 @user_passes_test(is_admin)
 def adminDashboard(request):
+    if request.method == 'POST':
+        print('request----------')
     orders = Order.objects.all()
     customers = Restaurant.objects.all()
     total_orders = orders.count()
@@ -78,6 +82,8 @@ def adminDashboard(request):
     pending  = orders.filter(status='Pending').count()
     outfor  = orders.filter(status='out for delivery').count()
     context = {'outfor':outfor, 'orders':orders , 'customers':customers,"total_orders":total_orders,'pending':pending,'delivered':delivered}
+
+
     return render(request , 'base/admindashboard/dashboard.html',context)
 
 @login_required(login_url='login/')
@@ -105,11 +111,13 @@ def order(request):
             order.restaurant = restaurant
             order.status = 'Pending'  
             order.save()
-            messages.success(request,"success")
+            messages.success(request, 'Your order has been placed successfully. Let us handle the rest.')
+
             return redirect('user-dashboard')
         else:
-            print(form.errors)
-            messages.success(request,"Error")
+            error_msg= form.errors
+            messages.error(request, error_msg)
+            messages.error(request, "Something Went wrong while placing your order")
 
     context = {'form': form}
     return render(request, 'base/client/order.html', context)
@@ -159,20 +167,19 @@ def viewRestaurant(request):
     context = {'customers': customers, "customer_data":customer_data}
     return render(request ,'base/admindashboard/viewCustomer.html',context)
 
+
+
 @login_required(login_url='login/')
 @user_passes_test(is_admin)
 def deleteOrder(request , pk):
-    print('coming')
-    print('checking Reques', request.method , request.POST)
     order = Order.objects.get(id=pk)
-    print(order)
     if request.method =='POST':
         order.delete()
-        print('entering')
-        return  redirect('/')
+        messages.success(request ,'Deleted Succesfully')
+        return  redirect('admin-dashboard')
     context = {'order':order}
     print('Not Entering')
-    return render( request ,'getmeal/del.html')
+    return render( request ,'base/admindashboard/del.html')
 
 def redirectDash(request):
     user = request.user
@@ -186,3 +193,25 @@ def redirectDash(request):
 
 def unauthor(request):
     return HttpResponse("Not Auhtorised")
+
+@login_required(login_url='login/')
+@user_passes_test(is_admin)
+def update(request, pk):
+    if request.method == 'POST':
+        try:
+            order = Order.objects.get(id=pk)
+            # Update only the incoming data from the form
+            incoming_data = request.POST.get('status')  # Replace 'incoming_data' with the actual field name
+            if incoming_data is not None:
+                order.status = incoming_data
+                order.save()
+                messages.success(request ,"Order Updated Succesfully")
+                return redirect('admin-dashboard')  # Redirect to the desired page after the update
+            else:
+                # Handle the case where incoming_data is not provided in the form
+                messages.error(request, "UPDATE Required")
+        except Order.DoesNotExist:
+            # Handle the case where the order with the given ID doesn't exist
+            messages.error(request, "Order does not exist.")
+    
+    return render(request, 'base/admindashboard/updatemodal.html')

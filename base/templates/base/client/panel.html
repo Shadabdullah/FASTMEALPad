@@ -10,18 +10,7 @@
   </head>
   <body class="flex bg-background-color min-h-screen font-mono">
     <aside class="hidden sm:flex sm:flex-col">
-      <a href="#"
-        alt="wait"
-        class="items-center justify-center h-20 w-20 bg-dash-back hidden"
-      >
-        <svg fill="none" viewBox="0 0 64 64" class="h-12 w-12">
-          <title>Company logo</title>
-          <path
-            d="M32 14.2c-8 0-12.9 4-14.9 11.9 3-4 6.4-5.6 10.4-4.5 2.3.6 4 2.3 5.7 4 2.9 3 6.3 6.4 13.7 6.4 7.9 0 12.9-4 14.8-11.9-3 4-6.4 5.5-10.3 4.4-2.3-.5-4-2.2-5.7-4-3-3-6.3-6.3-13.7-6.3zM17.1 32C9.2 32 4.2 36 2.3 43.9c3-4 6.4-5.5 10.3-4.4 2.3.5 4 2.2 5.7 4 3 3 6.3 6.3 13.7 6.3 8 0 12.9-4 14.9-11.9-3 4-6.4 5.6-10.4 4.5-2.3-.6-4-2.3-5.7-4-2.9-3-6.3-6.4-13.7-6.4z"
-            fill="#fff"
-          />
-        </svg>
-      </a>
+
       <div
         class="flex-grow flex flex-col justify-between text-white bg-dash-back"
       >
@@ -70,7 +59,7 @@
         <div
           class="inline-flex items-center justify-center h-20 w-20 border-t border-gray-700"
         >
-         <a class="p-3 hover:text-gray-400 hover:bg-gray-700 focus:text-gray-400 focus:bg-gray-700 rounded-sm" href="{% url 'user-logout' %}">
+         <button class="p-3 hover:text-gray-400 hover:bg-gray-700 focus:text-gray-400 focus:bg-gray-700 rounded-sm" id="headerLogout">
             <span class="sr-only">Log Out</span>
            
             <svg
@@ -88,7 +77,7 @@
               />
             </svg>
              <span class="sr-only">View Customer Details</span>
-          </a>
+          </button>
           </button>
         </div>
       </div>
@@ -201,7 +190,7 @@
           </div>
           <div class="border-t border-gray-700 pb-3 pt-4">
               
-        <a class=" p-3 text-white hover:text-gray-400 hover:bg-gray-700 focus:text-gray-400 focus:bg-gray-700 rounded-sm" href="{% url 'user-logout' %}">
+        <button class=" p-3 text-white hover:text-gray-400 hover:bg-gray-700 focus:text-gray-400 focus:bg-gray-700 rounded-sm"  id="logoutButtonFooter">
             <span class="sr-only">Log Out</span>
            
             <svg
@@ -221,7 +210,7 @@
             </svg>
              <span class="sr-only">Log Out</span>
             
-          </a>
+          </button>
            
   
           </div>
@@ -229,6 +218,7 @@
 
       {% block content %} {% endblock %}
        <script src="{% static 'base/js/panelHamburger.js' %}"></script>
+       <script src="{% static 'base/js/logoutClient.js' %}"></script>
     </div>
   </body>
 </html>

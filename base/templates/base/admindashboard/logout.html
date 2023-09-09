@@ -1,0 +1,45 @@
+<form
+  action=""
+  method="post"
+  class="top-1/2 hidden z-50 absolute max-w-sm my-3 overflow-x-auto bg-white rounded-sm shadow-lg right-1/2"
+  id="myModal"
+>
+  {% csrf_token %}
+  <div class="flex px-5 py-4 border-b border-gray-200">
+    <div class="flex items-center justify-center w-6">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke="currentColor"
+        class="w-6 h-6"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15M12 9l-3 3m0 0l3 3m-3-3h12.75"
+        />
+      </svg>
+    </div>
+    <span class="ml-2 text-lg font-bold text-gray-700">Logout</span>
+  </div>
+
+  <div class="px-10 py-5 text-gray-600">Are you sure to logout ?</div>
+
+  <div class="flex justify-end px-5 py-4 bg-gray-100 border-t border-gray-300">
+    <button
+      type="button"
+      class="px-3 py-2 mr-1 text-sm text-white transition duration-150 bg-dash-back rounded-sm hover:bg-gray-800"
+      id="cancel-btn"
+    >
+      Cancel
+    </button>
+    <a
+      href="{% url 'user-logout' %}"
+      class="ml-4 text-blue-500 border border-blue-500 hover:bg-blue-100 py-2 px-4 rounded-sm cursor-pointer"
+    >
+      LogOut</a
+    >
+  </div>
+</form>
