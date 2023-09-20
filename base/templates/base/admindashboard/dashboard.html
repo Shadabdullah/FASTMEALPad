@@ -233,9 +233,12 @@
     <table
       class="border-collapse border-spacing-0 "
     >
-    <thead>
+    
       <th class=" bg-secondry-light text-white uppercase p-2 min-w-fit whitespace-nowrap overflow-hidden">
         Restaurant NAME
+      </th>
+        <th class=" bg-secondry-light text-white uppercase p-2 min-w-fit whitespace-nowrap overflow-hidden">
+        Booking Time
       </th>
       <th class="bg-secondry-light text-white uppercase p-2 whitespace-nowrap overflow-hidden">
         Customer name
@@ -275,7 +278,8 @@
 
     {% for order in orders %}
     <tr class="border-b border-border-color py-8 text-white" data-field1="{{  order.restaurant.name  }}" data-field2="{{ order.customer_name}}">
-      <td class="px-2 py-4 text-center">{{ order.restaurant.name }}</td>
+      <td class="px-2 py-4 text-center">{{ order.restaurant.name }}</td>    
+      <td class="px-2 py-4 text-center w-fit">{{ order.booking_time }}</td>
       <td class="px-2 py-4 text-center">{{ order.customer_name }}</td>
       <td class="px-2 py-4">{{ order.item_name }}</td>
       <td class="px-2 py-4 text-center">{{ order.phone_number }}</td>

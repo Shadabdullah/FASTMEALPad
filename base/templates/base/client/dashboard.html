@@ -232,6 +232,9 @@
       <th class="sticky top-1 bg-secondry-light text-white uppercase px-2 py-4  text-center">
         Customer name
       </th>
+           <th class="sticky top-1 bg-secondry-light text-white uppercase px-2 py-4  text-center">
+        Booking Time
+      </th>
       <th class="sticky top-1 bg-secondry-light text-white uppercase px-2 py-4 text-center">
         Item NAME
       </th>
@@ -259,6 +262,7 @@
         {% for order in orders %}
      <tr class="border-b border-border-color py-8 text-white">
           <td class="px-2 py-4 ">{{ order.customer_name }}</td>
+          <td class="px-2 py-4 text-center w-fit">{{ order.booking_time }}</td>
           <td class="px-2 py-4 text-center">{{ order.item_name }}</td>
           <td class="px-2 py-4 text-center">{{ order.phone_number }}</td>
           <td class="px-2 py-4 text-center">{{ order.amount }}</td>
