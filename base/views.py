@@ -8,7 +8,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import Group
 from django.contrib import messages
 import time
-from notifications.signals import notify
+from .email import send_order_confirmation_email
 from django.contrib.auth.models import User
 
 
@@ -117,12 +117,7 @@ def order(request):
             order.status = 'Pending'  
             order.save()
             # notification
-            sender = request.user
-            print(sender)
-            receiver = User.objects.get(is_superuser=True)
-            print(receiver)
-            notify.send(sender, recipient=receiver, verb='Message', description=request.POST.get('customer_name'))
-          
+            send_order_confirmation_email(request.user, 'getmealfast@gmail.com')
 
             # NOtification
             messages.success(request, 'Your order has been placed successfully. Let us handle the rest.')
