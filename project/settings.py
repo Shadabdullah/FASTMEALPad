@@ -114,10 +114,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-# settings.py
-
-TIME_ZONE = 'Asia/Kuwait'
-
+TIME_ZONE = 'UTC'
 
 USE_I18N = True
 
@@ -146,4 +143,3 @@ TAILWIND_APP_NAME = 'theme'
 INTERNAL_IPS = [
     "127.0.0.1",
 ]
-
