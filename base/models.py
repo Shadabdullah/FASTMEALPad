@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
-
+from django.utils import timezone
 # Create your models here.
 
 class Restaurant(models.Model):
@@ -39,10 +39,14 @@ class Order(models.Model):
     amount = models.DecimalField(max_digits=10, decimal_places=2)
     address = models.TextField(null=True)
     order_number = models.CharField(max_length=100)
-    booking_time = models.DateTimeField(auto_now_add=True)
 
     status = models.CharField(max_length=200, null=True, choices=STATUS)
+    booking_time = models.DateTimeField(default=timezone.now)  # Use default to set the current time when creating an order
 
+    def save(self, *args, **kwargs):
+        # Update the booking_time to the current time whenever the order is saved
+        self.booking_time = timezone.now()
+        super().save(*args, **kwargs)
     def __str__(self) -> str:
         return self.customer_name
 

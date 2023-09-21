@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     'tailwind',
     'theme',
     'base',
-    'django_filters'
+    'django_filters',
+    'notifications',
     
 ]
 
@@ -113,7 +114,10 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+# settings.py
+
+TIME_ZONE = 'Asia/Kuwait'
+
 
 USE_I18N = True
 
@@ -142,3 +146,4 @@ TAILWIND_APP_NAME = 'theme'
 INTERNAL_IPS = [
     "127.0.0.1",
 ]
+

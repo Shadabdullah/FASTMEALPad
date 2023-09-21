@@ -8,6 +8,11 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import Group
 from django.contrib import messages
 import time
+from notifications.signals import notify
+from django.contrib.auth.models import User
+
+
+
 # Create your views here.
 from django.contrib.auth.decorators import user_passes_test
 
@@ -111,6 +116,15 @@ def order(request):
             order.restaurant = restaurant
             order.status = 'Pending'  
             order.save()
+            # notification
+            sender = request.user
+            print(sender)
+            receiver = User.objects.get(is_superuser=True)
+            print(receiver)
+            notify.send(sender, recipient=receiver, verb='Message', description=request.POST.get('customer_name'))
+          
+
+            # NOtification
             messages.success(request, 'Your order has been placed successfully. Let us handle the rest.')
 
             return redirect('user-dashboard')

@@ -94,7 +94,15 @@
 
 
 
-
+<!-- <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+  {% for notification in  user.notifications.unread %}
+	  <div>
+	    Message from <b>{{ notification.actor }}</b>
+	    <button class="dropdown-item" type="button">{{ notification.description }}</button>			
+		</div>
+		<div class="dropdown-divider"></div>
+	{% endfor %}
+</div> -->
 
 <main class="p-6 sm:p-10 space-y-6 bg-dash-back text-white m-2 border border-border-color">
   <div
