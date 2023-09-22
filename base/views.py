@@ -10,8 +10,9 @@ from django.contrib import messages
 import time
 from .email import send_order_confirmation_email
 from django.contrib.auth.models import User
-
-
+from .orderNotification import send_welcome_message_async
+import asyncio
+from telegram import Bot
 
 # Create your views here.
 from django.contrib.auth.decorators import user_passes_test
@@ -103,30 +104,32 @@ def clientDashboard(request):
 
     return render(request,'base/client/dashboard.html',context)
 
-login_required(login_url='login/')
+@login_required(login_url='login/')
 @user_passes_test(is_rest)
 def order(request):
-    restaurant = request.user.restaurant
-    form = OrderForm()
     if request.method == 'POST':
-        print(request.POST)
         form = OrderForm(request.POST)
         if form.is_valid():
+            restaurant = request.user.restaurant
             order = form.save(commit=False)
             order.restaurant = restaurant
-            order.status = 'Pending'  
+            order.status = 'Pending'
             order.save()
+
             # notification
-            send_order_confirmation_email(request.user, 'getmealfast@gmail.com')
+            loop = asyncio.new_event_loop()
+            asyncio.set_event_loop(loop)
+            loop.run_until_complete(send_welcome_message_async(restaurant))
 
-            # NOtification
+            # Notification
             messages.success(request, 'Your order has been placed successfully. Let us handle the rest.')
-
             return redirect('user-dashboard')
         else:
-            error_msg= form.errors
+            error_msg = form.errors
             messages.error(request, error_msg)
-            messages.error(request, "Something Went wrong while placing your order")
+            messages.error(request, "Something went wrong while placing your order")
+    else:
+        form = OrderForm()
 
     context = {'form': form}
     return render(request, 'base/client/order.html', context)
