@@ -41,12 +41,9 @@ class Order(models.Model):
     order_number = models.CharField(max_length=100)
 
     status = models.CharField(max_length=200, null=True, choices=STATUS)
-    booking_time = models.DateTimeField(default=timezone.now)  # Use default to set the current time when creating an order
+    booking_time = models.DateTimeField() 
+    delivery_time = models.DateTimeField() 
 
-    def save(self, *args, **kwargs):
-        # Update the booking_time to the current time whenever the order is saved
-        self.booking_time = timezone.now()
-        super().save(*args, **kwargs)
     def __str__(self) -> str:
         return self.customer_name
 

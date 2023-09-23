@@ -231,110 +231,95 @@
     </div>
   </section>
 </main>
-
 <div class="p-5 m-2 max-w-fit bg-dash-back border border-border-color">
-
+  <!-- table wrapper -->
   <div
-    class="max-h-96 overflow-y-scroll m-5 max-w-xs md:max-w-xl lg:max-w-3xl xl:max-w-screen-xl  overflow-x-auto"
+    class="max-h-96 overflow-y-scroll m-5 max-w-xs md:max-w-xl lg:max-w-3xl xl:max-w-screen-xl"
   >
     <!-- Table -->
-    <table
-      class="border-collapse border-spacing-0 "
-    >
-    
-      <th class=" bg-secondry-light text-white uppercase p-2 min-w-fit whitespace-nowrap overflow-hidden">
-        Restaurant NAME
-      </th>
-        <th class=" bg-secondry-light text-white uppercase p-2 min-w-fit whitespace-nowrap overflow-hidden">
-        Booking Time
-      </th>
-      <th class="bg-secondry-light text-white uppercase p-2 whitespace-nowrap overflow-hidden">
-        Customer name
-      </th>
-      <th class=" bg-secondry-light text-white uppercase p-2 whitespace-nowrap overflow-hidden">
-        Item NAME
-      </th>
-      <th class=" bg-secondry-light text-white uppercase p-2 whitespace-nowrap overflow-hidden">
-        Phone number
-      </th>
-      <th class=" bg-secondry-light text-white uppercase p-2 whitespace-nowrap overflow-hidden">
-        Order number
-      </th>
-      <th class="bg-secondry-light text-white uppercase p-2 whitespace-nowrap overflow-hidden">
-        Price
-      </th>
-      <th class=" bg-secondry-light text-white uppercase p-2 whitespace-nowrap overflow-hidden">
-        Location
-      </th>
-      <th class=" bg-secondry-light text-white uppercase p-2 whitespace-nowrap overflow-hidden">
-        Payment type
-      </th>
-      <th class=" bg-secondry-light text-white uppercase p-2 whitespace-nowrap overflow-hidden">
-        Status
-      </th>
-      <th class=" bg-secondry-light text-white uppercase p-2 whitespace-nowrap overflow-hidden">
-        Update
-      </th>
-      <th class=" bg-secondry-light text-white uppercase p-2 whitespace-nowrap overflow-hidden">
-       Share
-      </th>
-      <th class=" bg-secondry-light text-white uppercase p-2 whitespace-nowrap overflow-hidden">
-        Remove
-      </th>
-    </thead>
-    
+    <table class="border-collapse border-spacing-0 min-w-[max-content]">
+      <thead>
+          <th class="sticky top-1 bg-secondry-light text-white uppercase py-2">
+            Restaurant NAME
+        </th>
+         <th class="sticky top-1 bg-secondry-light text-white uppercase py-2">
+          Booking Time
+        </th>
+             <th class="sticky top-1 bg-secondry-light text-white uppercase py-2">
+          DELIVERY Time
+        </th>
+        <th class="sticky top-1 bg-secondry-light text-white uppercase py-2">
+          Customer name
+        </th>
+        <th class="sticky top-1 bg-secondry-light text-white uppercase py-2">
+          Item NAME
+        </th>
+        <th class="sticky top-1 bg-secondry-light text-white uppercase py-2">
+          Phone 
+        </th>
+        <th class="sticky top-1 bg-secondry-light text-white uppercase py-2">
+          Order number
+        </th>
+        <th class="sticky top-1 bg-secondry-light text-white uppercase py-2">
+          Price
+        </th>
+        <th class="sticky top-1 bg-secondry-light text-white uppercase py-2">
+          Location
+        </th>
+        <th class="sticky top-1 bg-secondry-light text-white uppercase py-2">
+          Payment type
+        </th>
+        <th class="sticky top-1 bg-secondry-light text-white uppercase py-2">
+          Status
+        </th>
+                <th class="sticky top-1 bg-secondry-light text-white uppercase py-2">
+          UPDATE
+        </th>
+        <th class="sticky top-1 bg-secondry-light text-white uppercase py-2">
+          SHARE
+        </th>
+              <th class="sticky top-1 bg-secondry-light text-white uppercase py-2">
+          REMOVE
+        </th>
+      </thead>
 
-    {% for order in orders %}
-    <tr class="border-b border-border-color py-8 text-white" data-field1="{{  order.restaurant.name  }}" data-field2="{{ order.customer_name}}">
-      <td class="px-2 py-4 text-center">{{ order.restaurant.name }}</td>    
-      <td class="px-2 py-4 text-center w-fit">{{ order.booking_time }}</td>
-      <td class="px-2 py-4 text-center">{{ order.customer_name }}</td>
-      <td class="px-2 py-4">{{ order.item_name }}</td>
-      <td class="px-2 py-4 text-center">{{ order.phone_number }}</td>
-      <td class="px-2 py-4 text-center">{{ order.amount }}</td>
-      <td class="px-2 py-4 text-center">{{ order.order_number }}</td>
-      <td class="px-2 py-4 overflow-hidden">{{ order.address }}</td>
-      <td class="px-2 py-4 text-center">{{ order.prepaid_postpaid }}</td>
-      <td class="px-2 py-4 text-center">{{ order.status }}</td>
-
-      <!-- Perform update opration -->
-      <td class="px-2 py-4 text-center ">
+      {% for order in orders %}
+      <tr class="border-b border-border-color py-8 text-white"> 
+           
+        <td class="px-2 py-4">{{ order.restaurant.name }} </td>
+        <td class="px-2 py-4">{{ order.booking_time }}</td>
+        <td class="px-2 py-4">{{ order.delivery_time|time:"H:i" }}</td>
+        <td class="px-2 py-4">{{ order.customer_name }}</td>
+        <td class="px-2 py-4">{{ order.item_name }}</td>
+        <td class="px-2 py-4">{{ order.phone_number }}</td>
+       <td class="px-2 py-4">{{ order.order_number }}</td> 
+       <td class="px-2 py-4">{{ order.amount }}</td>
         
-        <a href="{% url 'update-status' order.id %}">
+        <td class="px-2 py-4">{{ order.address }}</td>
+        <td class="px-2 py-4">{{ order.prepaid_postpaid }}</td>
+        <td class="px-2 py-4">{{ order.status }}</td>
+
+      <td class="px-2 py-4"> <a href="{% url 'update-status' order.id %}">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
   <path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" />
 </svg>
 
-        </a>
-
-      
-      </td>
-
-
-
-
-
-      <td class=" px-2 py-4 text-center"><button class="share-button"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+        </a></td>
+<td class="px-2 py-4"><button class="share-button"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
         <path stroke-linecap="round" stroke-linejoin="round" d="M7.217 10.907a2.25 2.25 0 100 2.186m0-2.186c.18.324.283.696.283 1.093s-.103.77-.283 1.093m0-2.186l9.566-5.314m-9.566 7.5l9.566 5.314m0 0a2.25 2.25 0 103.935 2.186 2.25 2.25 0 00-3.935-2.186zm0-12.814a2.25 2.25 0 103.933-2.185 2.25 2.25 0 00-3.933 2.185z" />
       </svg>
       <span class='sr-only'> share </span>
       </button></td>
-      <td class="px-2 py-4 text-center"><a href="{% url 'delete-order' order.id %}">
+<td class="px-2 py-4"><a href="{% url 'delete-order' order.id %}">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
           <path stroke-linecap="round" stroke-linejoin="round" d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0" />
         </svg>
         
 
       </a></td>
-
-    </tr>
-    {% endfor %}
-                
+      </tr>
+      {% endfor %}
     </table>
-
   </div>
-
-
-</div> 
-
+</div>
 {% endblock %}

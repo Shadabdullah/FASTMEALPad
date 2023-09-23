@@ -1,3 +1,5 @@
+from datetime import datetime
+from django.utils import timezone
 from django.http import HttpResponse
 from django.shortcuts import redirect, render
 from .models import Restaurant , Order
@@ -114,6 +116,8 @@ def order(request):
             order = form.save(commit=False)
             order.restaurant = restaurant
             order.status = 'Pending'
+            order.booking_time = timezone.now()
+            order.delivery_time = datetime(order.booking_time.year, order.booking_time.month, order.booking_time.day, 0, 0, 0)
             order.save()
 
             # notification
@@ -216,6 +220,8 @@ def update(request, pk):
             incoming_data = request.POST.get('status')  # Replace 'incoming_data' with the actual field name
             if incoming_data is not None:
                 order.status = incoming_data
+                if incoming_data == "Delivered":
+                    order.delivery_time = timezone.now()
                 order.save()
                 messages.success(request ,"Order Updated Succesfully")
                 return redirect('admin-dashboard')  # Redirect to the desired page after the update

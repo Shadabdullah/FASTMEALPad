@@ -7,7 +7,7 @@ from django.contrib.auth.forms import UserCreationForm
 class OrderForm(ModelForm):
     class Meta:
         model = Order
-        exclude = ['status', 'booking_time', 'restaurant']
+        exclude = ['status', 'booking_time', 'restaurant' ,'delivery_time']
 
 
 class CreateUserForm(UserCreationForm):
