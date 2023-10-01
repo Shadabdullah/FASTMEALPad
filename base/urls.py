@@ -2,6 +2,7 @@ from django.urls import include, path
 from .views import *
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from .landingPage import landingPage
+from .downloadCsv import download_csv
 urlpatterns = [
     path('', landingPage, name='landingPage'),
     path('register/',registration,name='registration'),
@@ -16,5 +17,6 @@ urlpatterns = [
     path('dashboard/' ,redirectDash ,name='dashRedirec'),
     path('unauthor/',unauthor, name='unauthor'),
     path('update/<str:pk>/',update, name='update-status'),
+    path('download/<str:pk>/',download_csv,name='download'),
     
 ]
