@@ -17,11 +17,8 @@ from pathlib import Path
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-87nxk-j9gnfl9s221me=8@l11yxtm%l5mgf16aq+l8-4*e)!57'
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -150,6 +147,4 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'getmealorders@gmail.com'  # Your Gmail email address
-EMAIL_HOST_PASSWORD = 'kldk ropc ftqs veyz'  # Your Gmail email password or app password
-DEFAULT_FROM_EMAIL = 'getmealorders@gmail.com'  # The default "from" address for emails
+
